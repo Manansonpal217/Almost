@@ -145,12 +145,12 @@ const Hero = () => {
 
             {/* Main Heading */}
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-normal py-2"
               variants={itemVariants}
             >
               We Create
               <motion.span 
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
+                className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 py-1"
                 animate={{ 
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   backgroundSize: ["200% 200%", "200% 200%", "200% 200%"]

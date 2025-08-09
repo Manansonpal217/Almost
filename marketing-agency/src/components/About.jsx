@@ -90,12 +90,12 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-white mb-6 leading-normal py-2"
             style={{ y, opacity }}
           >
             About
             <motion.span 
-              className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
+              className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 py-1"
               animate={{ 
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
               }}
@@ -124,7 +124,7 @@ const About = () => {
             animate={isInView ? "visible" : "hidden"}
           >
             <motion.h3 
-              className="text-3xl font-bold text-white mb-6"
+              className="text-3xl font-bold text-white mb-6 leading-normal py-1"
               variants={itemVariants}
             >
               Our Story
@@ -296,7 +296,7 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <motion.h3 
-            className="text-3xl font-bold text-white text-center mb-12"
+            className="text-3xl font-bold text-white text-center mb-12 leading-normal py-1"
             style={{ y, opacity }}
           >
             Our Values
@@ -377,7 +377,7 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <motion.h3 
-            className="text-3xl font-bold text-white text-center mb-12"
+            className="text-3xl font-bold text-white text-center mb-12 leading-normal py-1"
             style={{ y, opacity }}
           >
             Meet Our Team
