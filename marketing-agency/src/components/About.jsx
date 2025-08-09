@@ -4,7 +4,11 @@ import { CheckCircle, Users, Award, Clock, Target, Sparkles, Star } from 'lucide
 
 const About = () => {
   const ref = useRef(null)
+  const valuesRef = useRef(null)
+  const teamRef = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const valuesInView = useInView(valuesRef, { once: true, margin: "-150px" })
+  const teamInView = useInView(teamRef, { once: true, margin: "-150px" })
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -64,18 +68,25 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.4
       }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 60, scale: 0.8 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      scale: 1,
+      transition: { 
+        duration: 0.7, 
+        ease: "easeOut",
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
     }
   }
 
@@ -290,14 +301,17 @@ const About = () => {
 
         {/* Values Section */}
         <motion.div 
+          ref={valuesRef}
           className="mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          initial={{ opacity: 0, y: 60 }}
+          animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h3 
             className="text-3xl font-bold text-white text-center mb-12 leading-normal py-1"
-            style={{ y, opacity }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             Our Values
           </motion.h3>
@@ -305,7 +319,7 @@ const About = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            animate={valuesInView ? "visible" : "hidden"}
           >
             {values.map((value, index) => (
               <motion.div 
@@ -372,13 +386,16 @@ const About = () => {
 
         {/* Team Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          ref={teamRef}
+          initial={{ opacity: 0, y: 60 }}
+          animate={teamInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h3 
             className="text-3xl font-bold text-white text-center mb-12 leading-normal py-1"
-            style={{ y, opacity }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={teamInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             Meet Our Team
           </motion.h3>
@@ -386,7 +403,7 @@ const About = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            animate={teamInView ? "visible" : "hidden"}
           >
             {team.map((member, index) => (
               <motion.div 
